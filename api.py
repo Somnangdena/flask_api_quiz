@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Resource, Api, reqparse, fields, marshal_with, abort 
 
@@ -91,7 +91,19 @@ api.add_resource(Quizname, '/api/quizs/<string:subjectname>')
 
 @app.route('/')
 def home():
-    return '<h1>Flask Rest API<h1>'
+    return render_template('index.html')
+
+@app.route('/space')
+def space():
+    return render_template('space.html')
+
+@app.route('/animal')
+def animal():
+    return render_template('animal.html')
+
+@app.route('/programming')
+def programming():
+    return render_template('programming.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
